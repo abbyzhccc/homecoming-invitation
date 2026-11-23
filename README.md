@@ -5,7 +5,7 @@
 ## 内容与资源
 
 - `index.html`：封笺、四张双人照片叙事、回门宴信息及地图搜索入口。横幅完整呈现，所有照片可点击放大，不展示单人照。
-- `styles.css`：响应式排版及 reduced-motion 支持。
+- `styles.css`：响应式排版及 reduced-motion 支持。说明与操作文字至少 16px，日期、午宴和地址使用 18–20px；窄屏不缩小这些文字。
 - `script.js`：开笺滚动、快捷导航、地址复制及原幅照片查看。禁用 JavaScript 后正文和导航链接仍可使用。
 - `assets/courtyard-couple.jpg`、`assets/garden-kiss.jpg`、`assets/tender-moment.jpg`、`assets/window-couple.jpg`：由新提供的四张不同双人照片本机等比压缩而来，不修改人物、不裁切，去除重复上传的横图，不包含单人照资源。此前三张双人照片资源保留，但页面不再引用。
 - `assets/blossoms.svg`、`assets/paper.svg`：原创花枝和纸纹，未使用参考模板的源码、图片或诗句。
