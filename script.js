@@ -14,7 +14,7 @@ openLetter.addEventListener("click", (event) => {
     invitation.focus({ preventScroll: true });
     invitation.scrollIntoView({ behavior: reducedMotion.matches ? "auto" : "smooth" });
     window.history.replaceState(null, "", "#invitation");
-  }, reducedMotion.matches ? 0 : 550);
+  }, reducedMotion.matches ? 0 : 400);
 });
 
 const quickNav = document.querySelector(".quick-nav");
@@ -22,7 +22,7 @@ if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(([entry]) => {
     quickNav.classList.toggle("is-visible", !entry.isIntersecting);
   }, { rootMargin: "-50px 0px 0px 0px" });
-  observer.observe(document.querySelector(".envelope"));
+  observer.observe(document.querySelector(".cover"));
 } else {
   quickNav.classList.add("is-visible");
 }
