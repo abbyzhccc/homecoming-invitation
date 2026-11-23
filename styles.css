@@ -1,12 +1,20 @@
 @charset "UTF-8";
 
+@font-face {
+  font-family: "Invitation Serif";
+  src: url("assets/invitation-serif.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+}
+
 :root {
   --paper: #f3efe7;
   --ink: #695b49;
   --muted: #8c7961;
   --red: #a63e38;
   --line: #c9bba3;
-  --serif: "STKaiti", "KaiTi", "Songti SC", "STSong", "SimSun", serif;
+  --serif: "Invitation Serif", "Songti SC", "STSong", "SimSun", serif;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
@@ -24,7 +32,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 .page { position: relative; isolation: isolate; overflow: hidden; min-height: max(760px, 100svh); padding: 25px 30px 75px; scroll-snap-align: start; border-bottom: 1px solid #bba88838; }
 .page:after { content: ""; pointer-events: none; position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse at 50% 35%, transparent 35%, #bca88e14 100%); }
 .page-heading { position: relative; display: flex; justify-content: center; align-items: center; gap: 24px; z-index: 2; font-size: 18px; letter-spacing: .12em; color: var(--muted); white-space: nowrap; }
-.joy-seal { display: grid; place-items: center; width: 39px; height: 39px; flex-shrink: 0; border: 2px solid #b54943; border-radius: 50%; outline: 1px solid #b5494380; outline-offset: 3px; font: 28px/1 "STSong", "SimSun", serif; letter-spacing: 0; color: #b54943; transform: rotate(-6deg); }
+.joy-seal { display: grid; place-items: center; width: 39px; height: 39px; flex-shrink: 0; border: 2px solid #b54943; border-radius: 50%; outline: 1px solid #b5494380; outline-offset: 3px; font: 28px/1 var(--serif); letter-spacing: 0; color: #b54943; transform: rotate(-6deg); }
 .branch { position: absolute; width: 220px; pointer-events: none; z-index: -1; }
 .branch-left { left: -150px; top: 110px; transform: rotate(12deg); }
 .branch-right { right: -155px; bottom: 60px; transform: rotate(190deg); }
@@ -50,11 +58,14 @@ h2 { font-size: 28px; font-weight: 400; line-height: 1.9; letter-spacing: .15em;
 .landscape-frame { margin: 10px 0 0; }
 .photo-note { text-align: center; font-size: 17px; letter-spacing: .08em; padding: 18px 0; }
 .photo-note span { display: block; font-size: 16px; color: var(--muted); margin-top: 10px; }
+.original-photos { margin-top: 10px; border-top: 1px solid var(--line); }
+.photo-strip { display: flex; gap: 12px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; padding: 6px 6px 16px; scrollbar-color: var(--line) transparent; }
+.photo-strip .photo-frame { flex: 0 0 58%; scroll-snap-align: start; }
 .banquet { text-align: center; }
 .banquet-content { padding: 32px 0 0; position: relative; }
 .banquet-content h2 { font-size: 37px; margin-top: 10px; letter-spacing: .25em; }
 .banquet-intro { font-size: 18px; margin: 10px 0 24px; letter-spacing: .08em; }
-.date-numerals { font: 24px/1.8 Georgia, serif; letter-spacing: .1em; color: #80694a; margin-bottom: 8px; }
+.date-numerals { font: 24px/1.8 var(--serif); letter-spacing: .1em; color: #80694a; margin-bottom: 8px; }
 .date-numerals span { color: var(--red); padding: 0 7px; }
 time, .lunch { font-size: 20px; letter-spacing: .08em; }
 .lunch { margin-top: 4px; }

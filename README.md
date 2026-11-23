@@ -1,13 +1,14 @@
 # 回门宴电子请柬
 
-独立的手机优先国风请柬：米白纸纹、原创花枝、朱红囍印，整合为合照封面、双人照片集、赴宴信息三页。桌面保持居中的手机长卷比例，没有框架、外部字体或统计脚本。
+独立的手机优先国风请柬：米白纸纹、原创花枝、朱红囍印，整合为合照封面、双人照片集、赴宴信息三页。桌面保持居中的手机长卷比例，没有框架、第三方字体请求或统计脚本。
 
 ## 内容与资源
 
-- `index.html`：封笺、四张双人照片叙事、回门宴信息及地图搜索入口。横幅完整呈现，所有照片可点击放大，不展示单人照。
+- `index.html`：封笺、新旧共七张双人照片、回门宴信息及地图搜索入口。此前三张园林照片放在相册内的横向滚动区，不新增页面。横幅完整呈现，所有照片可点击放大，不展示单人照。
 - `styles.css`：响应式排版及 reduced-motion 支持。说明与操作文字至少 16px，日期、午宴和地址使用 18–20px；窄屏不缩小这些文字。
 - `script.js`：开笺滚动、快捷导航、地址复制及原幅照片查看。禁用 JavaScript 后正文和导航链接仍可使用。
-- `assets/courtyard-couple.jpg`、`assets/garden-kiss.jpg`、`assets/tender-moment.jpg`、`assets/window-couple.jpg`：由新提供的四张不同双人照片本机等比压缩而来，不修改人物、不裁切，去除重复上传的横图，不包含单人照资源。此前三张双人照片资源保留，但页面不再引用。
+- `assets/courtyard-couple.jpg`、`assets/garden-kiss.jpg`、`assets/tender-moment.jpg`、`assets/window-couple.jpg`：由新提供的四张不同双人照片本机等比压缩而来，不修改人物、不裁切，去除重复上传的横图，不包含单人照资源。此前 `garden.jpg`、`stroll.jpg`、`portrait.jpg` 三张双人照片同样保留展示。
+- `assets/invitation-serif.woff2`：自托管的 Noto Serif SC（思源宋体风格），按当前 HTML 与脚本中的字符制作 WOFF2 子集，统一手机与电脑的中文字体。上游为 Google Fonts `ofl/notoserifsc`，许可见 `assets/OFL-NotoSerifSC.txt`。后续新增文字时需要从同一上游字体重新生成子集，覆盖 HTML 和脚本内的全部字符。
 - `assets/blossoms.svg`、`assets/paper.svg`：原创花枝和纸纹，未使用参考模板的源码、图片或诗句。
 - `assets/background-music.mp3`：用户提供并指定的《金风玉露》音频，存放于本站，不调用第三方音乐服务。点击启阅时尝试播放并循环，右上角按钮可暂停/继续；加载或播放失败时显示提示。音频按需加载，不阻塞照片和正文。禁用 JavaScript 后使用页尾原生播放器。
 
