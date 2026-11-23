@@ -2,9 +2,65 @@
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const openLetter = document.querySelector(".open-letter");
+const music = document.querySelector("#background-music");
+const musicToggle = document.querySelector("#music-toggle");
+const musicStatus = document.querySelector("#music-status");
+let musicAttempted = false;
+let musicPending = false;
+music.controls = false;
+music.hidden = true;
+music.volume = 0.45;
+musicToggle.hidden = false;
+
+function updateMusicButton() {
+  const playing = !music.paused && !music.ended;
+  musicToggle.setAttribute("aria-pressed", String(playing));
+  musicToggle.setAttribute("aria-label", playing ? "暂停背景音乐" : "播放背景音乐");
+  musicToggle.querySelector(".music-label").textContent = playing ? "暂停" : "播放";
+}
+
+async function playMusic() {
+  if (musicPending) return;
+  musicAttempted = true;
+  musicPending = true;
+  musicToggle.disabled = true;
+  musicStatus.textContent = "";
+  try {
+    if (music.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) music.load();
+    await music.play();
+  } catch (error) {
+    musicStatus.textContent = error.name === "NotAllowedError"
+      ? "请点击音乐按钮，开启背景音乐。"
+      : "音乐暂时无法播放，请检查网络后再次点击播放。";
+  } finally {
+    musicPending = false;
+    musicToggle.disabled = false;
+    updateMusicButton();
+  }
+}
+
+musicToggle.addEventListener("click", () => {
+  if (music.paused) {
+    void playMusic();
+  } else {
+    music.pause();
+    musicStatus.textContent = "";
+  }
+});
+music.addEventListener("play", updateMusicButton);
+music.addEventListener("pause", updateMusicButton);
+function reportMusicError() {
+  music.pause();
+  musicStatus.textContent = "音乐加载失败，请检查网络后再次点击播放。";
+  updateMusicButton();
+}
+music.addEventListener("error", reportMusicError);
+music.querySelector("source").addEventListener("error", reportMusicError);
+
 let openingTimer;
 openLetter.addEventListener("click", (event) => {
   event.preventDefault();
+  if (!musicAttempted) void playMusic();
   window.clearTimeout(openingTimer);
   document.body.classList.remove("letter-opening");
   void openLetter.offsetWidth;
